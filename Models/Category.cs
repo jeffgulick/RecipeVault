@@ -9,5 +9,5 @@ public class Category
     [StringLength(100, MinimumLength = 1)]
     [Display(Name = "Category Name")]
     public string CategoryName { get; set; } = string.Empty;
-    public ICollection<Recipe> Recipes { get; set; } = default!; // Nav prop
+    public IEnumerable<Recipe> Recipes { get; set; } = default!; // Nav prop
 }

@@ -1,0 +1,66 @@
+@page
+@model RecipeVault.Pages_Recipes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Recipes</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].RecipeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].Instructions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].CookTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Recipe) {
+        <tr>
+            <td>
+                <img src="@item.ImageURL" alt="Image" style="width: 100px; height: auto;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CookTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RecipeID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RecipeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

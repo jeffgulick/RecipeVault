@@ -19,10 +19,9 @@ public class Recipe
 
     [Required]
     [Display(Name = "Recipe Cook Time")]
-    [Range(typeof(TimeSpan), "00:00:00", "23:59:59")]
     public TimeSpan CookTime { get; set; }
     public string ImageURL { get; set; } = string.Empty;
     public int CategoryID { get; set; } // FK
     public Category Category { get; set; } = default!; // Nav prop
-    public ICollection<RecipeIngredient>? RecipeIngredients { get; set; } = default!; // Nav prop
+    public IEnumerable<RecipeIngredient>? RecipeIngredients { get; set; } = default!; // Nav prop
 }
