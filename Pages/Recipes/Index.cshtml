@@ -1,0 +1,102 @@
+@page
+@model RecipeVault.Pages_Recipes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h1 class="display-4">Welcome to Recipe Vault</h1>
+            <p class="lead">Manage your recipes efficiently</p>
+        </div>
+    </div>
+ <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <form method="get">
+                <div class="input-group">
+                    <input type="search" name="CurrentSearch" class="form-control" placeholder="Search by Recipe, Ingredient, or category" value="@Model.CurrentSearch" />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].RecipeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].Instructions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].CookTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Recipe) {
+        <tr>
+            <td>
+                <img src="@item.ImageURL" alt="Image" class="img-fluid" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CookTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RecipeID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RecipeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<hr />
+@{
+    // If we are on page 1, prevDisabled will be set to the "disabled" class
+    // otherwise, it will be empty. So our previous button will be enabled or disabled based on this logic
+    var prevDisabled = "";
+    var nextDisabled = "";
+    if (Model.PageNum <= 1)
+    {
+        prevDisabled = "disabled";
+    }
+    if (Model.PageNum >= Model.TotalPages)
+    {
+        nextDisabled = "disabled";
+    }
+}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item @prevDisabled"><a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum - 1)">Previous</a></li>
+        <li class="page-item @nextDisabled"><a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum + 1)">Next</a></li>
+    </ul>
+</nav>

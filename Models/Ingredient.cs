@@ -9,5 +9,5 @@ public class Ingredient
     [StringLength(100, MinimumLength = 1)]
     [Display(Name = "Ingredient Name")]
     public string IngredientName { get; set; } = string.Empty;
-    public ICollection<RecipeIngredient>? RecipeIngredients { get; set; } = default!; // Nav prop
+    public IEnumerable<RecipeIngredient> RecipeIngredients { get; set; } = default!; // Nav prop
 }

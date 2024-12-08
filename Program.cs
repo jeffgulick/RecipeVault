@@ -1,9 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using RecipeVault.Models;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+// Dependency Injection of Db Context
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("RecipeVaultConnection")));
+
 var app = builder.Build();
+
+// Seed Data
+using (var scope = app.Services.CreateScope())
+{
+    SeedData.Initialize(scope.ServiceProvider);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
