@@ -17,9 +17,8 @@ public class Recipe
     [Display(Name = "Recipe Instructions")]
     public string Instructions { get; set; } = string.Empty;
 
-    [Required]
     [Display(Name = "Recipe Cook Time")]
-    public TimeSpan CookTime { get; set; }
+    public String CookTime { get; set; } = string.Empty;
     public string ImageURL { get; set; } = string.Empty;
     public int CategoryID { get; set; } // FK
     public Category Category { get; set; } = default!; // Nav prop

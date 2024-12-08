@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -46,7 +45,7 @@ namespace RecipeVault.Migrations
                     RecipeName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 500, nullable: false),
                     Instructions = table.Column<string>(type: "TEXT", nullable: false),
-                    CookTime = table.Column<TimeSpan>(type: "TEXT", nullable: false),
+                    CookTime = table.Column<string>(type: "TEXT", nullable: false),
                     ImageURL = table.Column<string>(type: "TEXT", nullable: false),
                     CategoryID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
