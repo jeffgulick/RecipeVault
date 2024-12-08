@@ -5,8 +5,23 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Recipes</h1>
-
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h1 class="display-4">Welcome to Recipe Vault</h1>
+            <p class="lead">Manage your recipes efficiently</p>
+        </div>
+    </div>
+ <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <form method="get">
+                <div class="input-group">
+                    <input type="search" name="CurrentSearch" class="form-control" placeholder="Search by Recipe, Ingredient, or category" value="@Model.CurrentSearch" />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -38,7 +53,7 @@
 @foreach (var item in Model.Recipe) {
         <tr>
             <td>
-                <img src="@item.ImageURL" alt="Image" style="width: 50px; height: auto;" />
+                <img src="@item.ImageURL" alt="Image" class="img-fluid" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RecipeName)
