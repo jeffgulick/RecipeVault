@@ -10,7 +10,7 @@ using RecipeVault.Models;
 namespace RecipeVault.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241208175336_InitialCreate")]
+    [Migration("20241208215551_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -107,7 +107,7 @@ namespace RecipeVault.Migrations
             modelBuilder.Entity("RecipeVault.Models.Recipe", b =>
                 {
                     b.HasOne("RecipeVault.Models.Category", "Category")
-                        .WithMany("Recipes")
+                        .WithMany()
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -132,11 +132,6 @@ namespace RecipeVault.Migrations
                     b.Navigation("Ingredient");
 
                     b.Navigation("Recipe");
-                });
-
-            modelBuilder.Entity("RecipeVault.Models.Category", b =>
-                {
-                    b.Navigation("Recipes");
                 });
 
             modelBuilder.Entity("RecipeVault.Models.Ingredient", b =>

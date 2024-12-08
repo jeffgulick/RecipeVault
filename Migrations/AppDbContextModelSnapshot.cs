@@ -104,7 +104,7 @@ namespace RecipeVault.Migrations
             modelBuilder.Entity("RecipeVault.Models.Recipe", b =>
                 {
                     b.HasOne("RecipeVault.Models.Category", "Category")
-                        .WithMany("Recipes")
+                        .WithMany()
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -129,11 +129,6 @@ namespace RecipeVault.Migrations
                     b.Navigation("Ingredient");
 
                     b.Navigation("Recipe");
-                });
-
-            modelBuilder.Entity("RecipeVault.Models.Category", b =>
-                {
-                    b.Navigation("Recipes");
                 });
 
             modelBuilder.Entity("RecipeVault.Models.Ingredient", b =>

@@ -22,5 +22,5 @@ public class Recipe
     public string ImageURL { get; set; } = string.Empty;
     public int CategoryID { get; set; } // FK
     public Category Category { get; set; } = default!; // Nav prop
-    public IEnumerable<RecipeIngredient>? RecipeIngredients { get; set; } = default!; // Nav prop
+    public IEnumerable<RecipeIngredient> RecipeIngredients { get; set; } = default!; // Nav prop
 }

@@ -7,7 +7,7 @@ namespace RecipeVault.Pages_Recipes
 {
     public class IndexModel : PageModel
     {
-        private readonly RecipeVault.Models.AppDbContext _context;
+        private readonly AppDbContext _context;
 
         [BindProperty(SupportsGet = true)]
         public int PageNum {get; set;} = 1;
@@ -26,13 +26,18 @@ namespace RecipeVault.Pages_Recipes
 
         public async Task OnGetAsync()
         {
-            var query = _context.Recipes.Include(i => i.Category).AsQueryable();
+            var query = _context.Recipes!
+                    .Include(i => i.Category)
+                    .Include(r => r.RecipeIngredients)
+                    .ThenInclude(ri => ri.Ingredient)
+                    .AsQueryable();
 
             // Search
             if (!string.IsNullOrEmpty(CurrentSearch))
             {
-                query = query.Where(r => r.RecipeName.Contains(CurrentSearch) ||
-                                     r.Category.CategoryName.Contains(CurrentSearch));
+                query = query.Where(r => r.RecipeName.ToLower().Contains(CurrentSearch) ||
+                                     r.Category.CategoryName.ToLower().Contains(CurrentSearch) ||
+                                     r.RecipeIngredients!.Any(ri => ri.Ingredient.IngredientName.ToLower().Contains(CurrentSearch)));
             }
             
             TotalPages = (int)Math.Ceiling(_context.Recipes.Count() / (double)PageSize);
