@@ -11,13 +11,16 @@ namespace RecipeVault.Pages_Recipes
 
         [BindProperty(SupportsGet = true)]
         public int PageNum {get; set;} = 1;
-        public int PageSize {get; set;} = 5;
+        public int PageSize {get; set;} = 8;
         public int TotalPages {get; set;}
 
         [BindProperty(SupportsGet = true)]
         public string CurrentSearch { get; set; } = string.Empty;
 
-        public IndexModel(RecipeVault.Models.AppDbContext context)
+        [BindProperty(SupportsGet = true)]
+        public string CurrentSort { get; set; } = string.Empty;
+
+        public IndexModel(AppDbContext context)
         {
             _context = context;
         }
@@ -32,7 +35,17 @@ namespace RecipeVault.Pages_Recipes
                     .ThenInclude(ri => ri.Ingredient)
                     .AsQueryable();
 
-            // Search
+            switch(CurrentSort)
+            {
+                case "first_asc":
+                    query = query.OrderBy(r => r.RecipeName);
+                    break;
+                case "first_desc":
+                    query = query.OrderByDescending(r => r.RecipeName);
+                    break;
+            }
+
+            // Search TODO: add search to pagination and details
             if (!string.IsNullOrEmpty(CurrentSearch))
             {
                 query = query.Where(r => r.RecipeName.ToLower().Contains(CurrentSearch) ||

@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,34 +8,68 @@ namespace RecipeVault.Pages_Recipes
 {
     public class CreateModel : PageModel
     {
-        private readonly RecipeVault.Models.AppDbContext _context;
+        private readonly AppDbContext _context;
+        private readonly ILogger<CreateModel> _logger;
 
-        public CreateModel(RecipeVault.Models.AppDbContext context)
+        public CreateModel(AppDbContext context, ILogger<CreateModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
-       public IActionResult OnGet()
+        public string ImagePlaceholder { get; set; } = "img/CarouselTen.jpg";
+
+        // Category ID to add to the recipe
+        [BindProperty]
+        [Display(Name = "Category")]
+        [Required(ErrorMessage = "Category is required.")]
+        public int CategoryIDToAdd { get; set; }
+
+        // List of ingredient IDs to add to the recipe
+        [BindProperty]
+        [Display(Name = "Ingredients")]
+        [Required(ErrorMessage = "At least one ingredient is required.")]
+        public List<int> IngredientIDSToAdd { get; set; } = new List<int>();
+
+        // Select lists for the dropdowns
+        public SelectList CategoryNameSelectList { get; set; } = default!;
+        public SelectList IngredientNameSelectList { get; set; } = default!;
+
+        [BindProperty]
+        public Recipe Recipe { get; set; } = new Recipe();
+
+        public IActionResult OnGet()
         {
-            ViewData["CategoryID"] = new SelectList(_context.Categories, "CategoryID", "CategoryName");
+            PopulateSelectLists();
             return Page();
         }
 
-        [BindProperty]
-        public Recipe Recipe { get; set; } = default!;
-
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            // Assign the selected category to the recipe
+            Recipe.CategoryID = CategoryIDToAdd;
 
+            // Assign the selected ingredients to the recipe
+            Recipe.RecipeIngredients = IngredientIDSToAdd.Select(ingredientId => new RecipeIngredient
+            {
+                IngredientID = ingredientId
+            }).ToList();
+
+            // Add the recipe to the database
             _context.Recipes.Add(Recipe);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            _logger.LogInformation($"Recipe '{Recipe.RecipeName}' created successfully with ID {Recipe.RecipeID}.");
+
+            // Set TempData to trigger the modal
+            TempData["SuccessMessage"] = $"Recipe '{Recipe.RecipeName}' created successfully!";
+            return RedirectToPage("./Create");
+        }
+
+        private void PopulateSelectLists()
+        {
+            CategoryNameSelectList = new SelectList(_context.Categories.ToList(), "CategoryID", "CategoryName");
+            IngredientNameSelectList = new SelectList(_context.Ingredients.ToList(), "IngredientID", "IngredientName");
         }
     }
 }

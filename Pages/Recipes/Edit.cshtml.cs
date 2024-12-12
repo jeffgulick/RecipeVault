@@ -12,9 +12,9 @@ namespace RecipeVault.Pages_Recipes
 {
     public class EditModel : PageModel
     {
-        private readonly RecipeVault.Models.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public EditModel(RecipeVault.Models.AppDbContext context)
+        public EditModel(AppDbContext context)
         {
             _context = context;
         }

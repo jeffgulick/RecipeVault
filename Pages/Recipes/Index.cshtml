@@ -16,23 +16,39 @@
         <div class="col-md-6 offset-md-3">
             <form method="get">
                 <div class="input-group">
-                    <input type="search" name="CurrentSearch" class="form-control" placeholder="Search by Recipe, Ingredient, or category" value="@Model.CurrentSearch" />
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <input type="search" name="CurrentSearch" class="form-control" placeholder="Search by Recipe, Ingredient, or ategory" value="@Model.CurrentSearch" />
+                    <button type="submit" class="btn btn-success">Search</button>
                 </div>
             </form>
         </div>
     </div>
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-striped align-middle">
+    <thead class="table-dark">
         <tr>
             <th>
                 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Recipe[0].RecipeName)
+                @{
+                    var firstSort = "first_asc";
+
+                    if (Model.CurrentSort == "first_asc")
+                    {
+                        firstSort = "first_desc";
+                    }
+                }
+                <a class="text-white text-decoration-none" asp-page="./Index" asp-route-CurrentSort="@firstSort" asp-route-PageNum="@Model.PageNum">
+                    @Html.DisplayNameFor(model => model.Recipe[0].RecipeName)
+                    @* arrow icons for sorting *@
+                    @if (Model.CurrentSort == "first_asc")
+                    {
+                        <i class="bi bi-arrow-down"></i>
+                    }
+                    else if (Model.CurrentSort == "first_desc")
+                    {
+                        <i class="bi bi-arrow-up"></i>
+                    }
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Recipe[0].Description)
@@ -46,14 +62,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.Recipe[0].Category)
             </th>
-            <th></th>
+            <th style="width: 250px;">Actions</th>
         </tr>
     </thead>
     <tbody>
+        
 @foreach (var item in Model.Recipe) {
         <tr>
             <td>
-                <img src="@item.ImageURL" alt="Image" class="img-fluid" />
+                <a asp-page="./Details" asp-route-id="@item.RecipeID">
+                    <img src="@item.ImageURL" alt="@item.RecipeName" class="img-thumbnail rounded" />
+                </a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RecipeName)
@@ -96,7 +115,7 @@
 }
 <nav aria-label="Page navigation example">
     <ul class="pagination">
-        <li class="page-item @prevDisabled"><a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum - 1)">Previous</a></li>
-        <li class="page-item @nextDisabled"><a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum + 1)">Next</a></li>
+        <li class="page-item @prevDisabled"><a class="page-link" asp-page="./Index" asp-route-CurrentSearch="@Model.CurrentSearch" asp-route-CurrentSort="@Model.CurrentSort" asp-route-PageNum="@(Model.PageNum - 1)">Previous</a></li>
+        <li class="page-item @nextDisabled"><a class="page-link" asp-page="./Index" asp-route-CurrentSearch="@Model.CurrentSearch" asp-route-CurrentSort="@Model.CurrentSort" asp-route-PageNum="@(Model.PageNum + 1)">Next</a></li>
     </ul>
 </nav>
