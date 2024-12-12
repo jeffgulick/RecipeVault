@@ -11,13 +11,13 @@ public class Recipe
     public string RecipeName { get; set; } = string.Empty;
 
     [StringLength(500)]
-    [Display(Name = "Recipe Description")]
+    [Display(Name = "Description")]
     public string Description { get; set; } = string.Empty;
 
-    [Display(Name = "Recipe Instructions")]
+    [Display(Name = "Instructions")]
     public string Instructions { get; set; } = string.Empty;
 
-    [Display(Name = "Recipe Cook Time")]
+    [Display(Name = "Cook Time")]
     public String CookTime { get; set; } = string.Empty;
     public string ImageURL { get; set; } = string.Empty;
     public int CategoryID { get; set; } // FK

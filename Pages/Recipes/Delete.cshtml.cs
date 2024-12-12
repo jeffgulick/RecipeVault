@@ -28,7 +28,7 @@ namespace RecipeVault.Pages_Recipes
                 return NotFound();
             }
 
-            var recipe = await _context.Recipes.FirstOrDefaultAsync(m => m.RecipeID == id);
+            var recipe = await _context.Recipes.Include(c => c.Category).FirstOrDefaultAsync(m => m.RecipeID == id);
 
             if (recipe is not null)
             {

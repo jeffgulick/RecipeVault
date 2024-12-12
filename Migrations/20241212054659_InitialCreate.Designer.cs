@@ -10,7 +10,7 @@ using RecipeVault.Models;
 namespace RecipeVault.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241208215551_InitialCreate")]
+    [Migration("20241212054659_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
