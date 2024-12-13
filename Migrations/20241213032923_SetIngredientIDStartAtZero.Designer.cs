@@ -10,8 +10,8 @@ using RecipeVault.Models;
 namespace RecipeVault.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241212054659_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241213032923_SetIngredientIDStartAtZero")]
+    partial class SetIngredientIDStartAtZero
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -85,7 +85,7 @@ public static class SeedData
                 Description = "A delicious chocolate cake",
                 Instructions = "Mix ingredients and bake",
                 CookTime = "45 Minutes",
-                ImageURL = "img/CarouselOne.jpg",
+                ImageURL = "img/chocoCake.jpg",
                 Category = categories[0],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -106,7 +106,7 @@ public static class SeedData
                 Description = "Juicy grilled chicken",
                 Instructions = "Grill the chicken with spices",
                 CookTime = "30 Minutes",
-                ImageURL = "img/CarouselTwo.jpg",
+                ImageURL = "img/grilledChicken.jpg",
                 Category = categories[1],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -122,7 +122,7 @@ public static class SeedData
                 Description = "Crispy garlic bread",
                 Instructions = "Bake the bread with garlic butter",
                 CookTime = "20 Minutes",
-                ImageURL = "img/CarouselThree.jpg",
+                ImageURL = "img/garlicBread.jpg",
                 Category = categories[2],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -137,7 +137,7 @@ public static class SeedData
                 Description = "Refreshing lemonade",
                 Instructions = "Mix lemon juice with water and sugar",
                 CookTime = "10 Minutes",
-                ImageURL = "img/CarouselFour.jpg",
+                ImageURL = "img/lemonade.jpg",
                 Category = categories[3],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -151,7 +151,7 @@ public static class SeedData
                 Description = "Classic Caesar salad",
                 Instructions = "Mix lettuce with Caesar dressing",
                 CookTime = "15 Minutes",
-                ImageURL = "img/CarouselFive.jpg",
+                ImageURL = "img/caeserSalad.jpg",
                 Category = categories[4],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -166,7 +166,7 @@ public static class SeedData
                 Description = "Fluffy pancakes",
                 Instructions = "Mix ingredients and cook on griddle",
                 CookTime = "20 Minutes",
-                ImageURL = "img/CarouselSix.jpg",
+                ImageURL = "img/CarouselFour.jpg",
                 Category = categories[6],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -185,7 +185,7 @@ public static class SeedData
                 Description = "Classic Italian pasta dish",
                 Instructions = "Cook pasta and mix with sauce",
                 CookTime = "40 Mintues",
-                ImageURL = "img/CarouselSeven.jpg",
+                ImageURL = "img/spaghettiBolognese.jpg",
                 Category = categories[1],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -218,7 +218,7 @@ public static class SeedData
                 Description = "Fresh and healthy fruit salad",
                 Instructions = "Mix all fruits together",
                 CookTime = "10 Minutes",
-                ImageURL = "img/CarouselNine.jpg",
+                ImageURL = "img/fruitSalad.jpg",
                 Category = categories[4],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -233,7 +233,7 @@ public static class SeedData
                 Description = "Hearty beef stew",
                 Instructions = "Cook beef and vegetables together",
                 CookTime = "1 Hour 30 Minutes",
-                ImageURL = "img/CarouselTen.jpg",
+                ImageURL = "img/beefStew.jpg",
                 Category = categories[1],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -250,7 +250,7 @@ public static class SeedData
                 Description = "Creamy chicken alfredo pasta",
                 Instructions = "Cook pasta and mix with alfredo sauce and chicken",
                 CookTime = "30 Minutes",
-                ImageURL = "img/CarouselEleven.jpg",
+                ImageURL = "img/chickenAlfredo.jpg",
                 Category = categories[1],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -266,7 +266,7 @@ public static class SeedData
                 Description = "Quick and easy vegetable stir fry",
                 Instructions = "Stir fry vegetables with soy sauce",
                 CookTime = "20 Mintues",
-                ImageURL = "img/CarouselTwelve.jpg",
+                ImageURL = "img/vegStir.jpg",
                 Category = categories[1],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -283,7 +283,7 @@ public static class SeedData
                 Description = "Delicious chocolate chip cookies",
                 Instructions = "Mix ingredients and bake",
                 CookTime = "20 Minutes",
-                ImageURL = "img/CarouselThirteen.jpg",
+                ImageURL = "img/chipCookies.jpg",
                 Category = categories[0],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -300,7 +300,7 @@ public static class SeedData
                 Description = "Fresh and healthy Greek salad",
                 Instructions = "Mix vegetables with olive oil and feta cheese",
                 CookTime = "10 Minutes",
-                ImageURL = "img/CarouselFourteen.jpg",
+                ImageURL = "img/greekSalad.jpg",
                 Category = categories[4],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -317,7 +317,7 @@ public static class SeedData
                 Description = "Warm and comforting tomato basil soup",
                 Instructions = "Cook tomatoes and basil together and blend",
                 CookTime = "30 Minutes",
-                ImageURL = "img/CarouselFifteen.jpg",
+                ImageURL = "img/tomatoBasil.jpg",
                 Category = categories[5],
                 RecipeIngredients = new List<RecipeIngredient>
                 {
@@ -366,7 +366,7 @@ public static class SeedData
                 Description = "Classic grilled cheese sandwich",
                 Instructions = "Grill bread with cheese",
                 CookTime = "15 Minutes",
-                ImageURL = "img/CarouselTwo.jpg",
+                ImageURL = "img/grilledCheese.png",
                 Category = categories[2],
                 RecipeIngredients = new List<RecipeIngredient>
                 {

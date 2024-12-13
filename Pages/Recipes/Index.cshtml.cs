@@ -43,6 +43,12 @@ namespace RecipeVault.Pages_Recipes
                 case "first_desc":
                     query = query.OrderByDescending(r => r.RecipeName);
                     break;
+                case "category_asc":
+                    query = query.OrderBy(r => r.Category.CategoryName);
+                    break;
+                case "category_desc":
+                    query = query.OrderByDescending(r => r.Category.CategoryName);
+                    break;
             }
 
             // Search TODO: add search to pagination and details

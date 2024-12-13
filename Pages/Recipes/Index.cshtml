@@ -60,7 +60,25 @@
                 @Html.DisplayNameFor(model => model.Recipe[0].CookTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Recipe[0].Category)
+                @{
+                    var secondSort = "category_asc";
+
+                    if (Model.CurrentSort == "category_asc")
+                    {
+                        secondSort = "category_desc";
+                    }
+                }
+                <a class="text-white text-decoration-none" asp-page="./Index" asp-route-CurrentSort="@secondSort" asp-route-PageNum="@Model.PageNum">
+                    @Html.DisplayNameFor(model => model.Recipe[0].Category)
+                    @if (Model.CurrentSort == "category_asc")
+                    {
+                        <i class="bi bi-arrow-down"></i>
+                    }
+                    else if (Model.CurrentSort == "category_desc")
+                    {
+                        <i class="bi bi-arrow-up"></i>
+                    }
+                </a>
             </th>
             <th style="width: 250px;">Actions</th>
         </tr>
@@ -90,7 +108,6 @@
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.RecipeID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.RecipeID">Delete</a>
             </td>

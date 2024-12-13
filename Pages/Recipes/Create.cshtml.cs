@@ -50,10 +50,17 @@ namespace RecipeVault.Pages_Recipes
             Recipe.CategoryID = CategoryIDToAdd;
 
             // Assign the selected ingredients to the recipe
-            Recipe.RecipeIngredients = IngredientIDSToAdd.Select(ingredientId => new RecipeIngredient
+            var ingredients = new List<RecipeIngredient>();
+            foreach (var ingredientId in IngredientIDSToAdd)
             {
-                IngredientID = ingredientId
-            }).ToList();
+                var recipeIngredient = new RecipeIngredient
+                {
+                    IngredientID = ingredientId
+                };
+                ingredients.Add(recipeIngredient);
+            }
+            // Assign the ingredients to the recipe in the database
+            Recipe.RecipeIngredients = ingredients;
 
             // Add the recipe to the database
             _context.Recipes.Add(Recipe);
