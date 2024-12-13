@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +7,9 @@ namespace RecipeVault.Pages_Recipes
 {
     public class DeleteModel : PageModel
     {
-        private readonly RecipeVault.Models.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public DeleteModel(RecipeVault.Models.AppDbContext context)
+        public DeleteModel(AppDbContext context)
         {
             _context = context;
         }

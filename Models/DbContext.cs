@@ -12,7 +12,9 @@ public class AppDbContext: DbContext
     // Many to many relationship
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         modelBuilder.Entity<RecipeIngredient>().HasKey(s => new {s.IngredientID, s.RecipeID});
+        
     }
 
     public DbSet<Recipe> Recipes { get; set; } = default!;
