@@ -12,3 +12,10 @@ RecipeVault is designed to help users store, organize, and access their recipes 
 - Categorize recipes by type
 - Search recipes by ingredients
 - User authentication and authorization
+
+
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
